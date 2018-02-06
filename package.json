@@ -24,6 +24,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
+    "moments": "0.0.2",
     "slugs": "^0.1.3"
   }
 }

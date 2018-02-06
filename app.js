@@ -6,7 +6,13 @@ const router = express.Router();
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const routes = require('./routes/index');
+const helpers = require('helpers');
 require('dotenv').config()
+
+app.use((req , res , next) => {
+    res.locals.h = helpers;
+    next();
+})
 
 //Connect to the database
 mongoose.connect(process.env.DB_URL);
