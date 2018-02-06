@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Article = mongoose.model('Article');
+
 exports.homePage = (req , res) => {
     res.render('index', {
         title : 'Home'

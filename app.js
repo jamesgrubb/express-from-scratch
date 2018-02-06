@@ -4,9 +4,10 @@ const path = require('path')
 const bodyParser = require('body-parser');
 const router = express.Router();
 const port = process.env.PORT || 3000;
-const mongoose = require('mongoose');
 const routes = require('./routes/index');
-const helpers = require('helpers');
+const mongoose = require('mongoose');
+const helpers = require('./helpers');
+
 require('dotenv').config()
 
 app.use((req , res , next) => {
@@ -28,14 +29,14 @@ db.on('error' , (err) => {
     console.error(`${err.message}`);
 });
 
-//Bring in models
-require('./models/Articles')
+require('./models/Article')
 
 app.set('view engine' , 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/static' , express.static(path.join(__dirname, 'public')))
 app.use('/' , routes )
+
 
 
 app.listen(port, () => {

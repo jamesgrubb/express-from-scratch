@@ -2,11 +2,11 @@ let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
 
-let articleSchema = mongoose.Schema({
+let articleSchema = new mongoose.Schema({
     title : {
         type : String,
-        required : 'Plesae enter the Authors name',
-        trim : true
+        required : 'Plesae enter the Authers name',
+        trim : true,
     },
     auther:{
         type: String,
@@ -15,17 +15,17 @@ let articleSchema = mongoose.Schema({
     },
     body:{
         type: String,
-        required: true
+        required: true,
     },
-    tags : [String]
+    tags : [String],
 });
 
 articleSchema.pre('save' , function(next){
-    if(!this.isModified('name')){
+    if(!this.isModified('title')){
         next();
         return;
     }
-    this.slug = slug(this.name);
+    this.slug = slug(this.title);
     next();
 })
 
