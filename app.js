@@ -1,35 +1,33 @@
+require('./models/Store');
+const mongoose = require('mongoose');
 const express = require('express');
-const app = express();
-const path = require('path')
+const path = require('path');
 const bodyParser = require('body-parser');
 const router = express.Router();
 const port = process.env.PORT || 3000;
 const routes = require('./routes/index');
-const mongoose = require('mongoose');
 const helpers = require('./helpers');
+
+const app = express();
 
 require('dotenv').config()
 
-app.use((req , res , next) => {
-    res.locals.h = helpers;
-    next();
-})
+// app.use((req , res , next) => {
+//     res.locals.h = helpers;
+//     next();
+// })
 
-//Connect to the database
+
+// Connect to our Database and handle any bad connections
 mongoose.connect(process.env.DB_URL);
-mongoose.Promise = global.Promise;
-let db = mongoose.connection;
-
-//Check connection
-db.once('open' , () =>{
-    console.log(`Connected to ${db}`);
-})
-
-db.on('error' , (err) => {
-    console.error(`${err.message}`);
+mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
+mongoose.connection.on('error', (err) => {
+  console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
 });
 
-require('./models/Article')
+// READY?! Let's go!
+
+
 
 app.set('view engine' , 'pug');
 app.use(bodyParser.json());

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Article = mongoose.model('Article');
+const Store = mongoose.model('Store');
 
 exports.homePage = (req , res) => {
     res.render('index', {
@@ -17,3 +17,9 @@ exports.createArticle = (req , res) => {
     console.log(req.body)
     res.json(req.body);
 }
+
+exports.createStore = async (req, res) => {
+    const store = new Store(req.body);
+    await store.save();
+    res.redirect('/');
+  };
