@@ -1,0 +1,29 @@
+{
+  "name": "jazzhands",
+  "version": "1.0.0",
+  "description": "Make Jazz Posters",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jamesgrubb/express-from-scratch.git"
+  },
+  "author": "James Grubb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesgrubb/express-from-scratch/issues"
+  },
+  "homepage": "https://github.com/jamesgrubb/express-from-scratch#readme",
+  "devDependencies": {
+    "mongoose": "^5.0.3",
+    "pug": "^2.0.0-rc.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "slugs": "^0.1.3"
+  }
+}

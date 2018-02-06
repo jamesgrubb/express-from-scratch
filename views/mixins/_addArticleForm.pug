@@ -1,0 +1,15 @@
+mixin addArticleForm(form = {})
+    form(action="/add" method="POST" class="form")
+        label(for="title") Title
+        input(type="text" name="title")
+        label(for="auther") Auther
+        input(type="text", name="auther")
+        label(for="body") Body
+        textarea(name="body")
+        - const choices = ['Film' , 'Music' , 'Live']
+        ul.tags 
+            each choice in choices
+                .tag.tag_choice
+                    input(type="checkbox", name="tags" id=choic value=choice)
+                    label(for=choice) #{choice}
+        input(type="submit" value="Save" class="button")
